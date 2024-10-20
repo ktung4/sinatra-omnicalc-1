@@ -37,12 +37,12 @@ get("/square_root/results") do
 end
 
 get("/random/new") do
-  erb(:new_min_max_calc)
+  erb(:new_random_calc)
 end
 
-get("/min_max/results") do
-  @the_min_num = params.fetch("min_number").to_f
-  @the_max_num = params.fetch("max_number").to_f
+get("/random/results") do
+  @the_min_num = params.fetch("user_min").to_f
+  @the_max_num = params.fetch("user_max").to_f
   @the_result = rand(@the_min_num...@the_max_num)
-  erb(:min_max_results)
+  erb(:random_results)
 end
