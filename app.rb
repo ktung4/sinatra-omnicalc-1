@@ -46,3 +46,16 @@ get("/random/results") do
   @the_result = rand(@the_min_num...@the_max_num)
   erb(:random_results)
 end
+
+
+get("/payment/new") do
+  erb(:new_payment_calc)
+end
+
+get("/payment/results") do
+  @the_apr = params.fetch("user_apr").to_f
+  @the_year = params.fetch("user_year").to_i*12
+  @the_principal = params.fetch("user_principal").to_f
+  @the_result = (@the_apr/100/12) * @the_principal/(1-(1+(@the_apr/100/12))**(-@the_year))
+  erb(:payment_results)
+end
